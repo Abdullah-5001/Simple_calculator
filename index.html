@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      button{
+        padding: 10px;
+        font-size: 15px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form onsubmit="return false;">
+        <div>
+          <div><label for="num1">Number 1:</label></div>
+          <input type="text" name="num1" id="num1" />
+        </div>
+        <div>
+          <div>
+            <label for="num2">Number 2:</label>
+          </div>
+          <input type="text" name="num2" id="num2" />
+        </div><br><br>
+        <div>
+          <button type="button" onclick="performCalculation('+');" id="add">+</button>
+          <button type="button" onclick="performCalculation('-');"id="subtract">-</button>
+          <button type="button" onclick="performCalculation('*');"id="multiply">*</button>
+          <button type="button" onclick="performCalculation('/');"id="divide">/</button>
+        </div>
+      </form>
+      <div>
+        <p id="result"></p>
+      </div>
+    </div>
+    <script>
+       function performCalculation(operation)
+      {
+        const num1 = Number(document.getElementById('num1').value);
+        const num2 = Number(document.getElementById('num2').value);
+        if(isNaN(num1) || isNaN(num2))
+        {
+          console.log(`Please input a valid number`);
+        }
+        let result;
+        switch(operation)
+        {
+          case '+':
+           result =num1 + num2;
+           break;
+          case '-':
+          result =num1 -num2;
+          break;
+          case '*': 
+          result =num1 * num2;
+          break;
+          case '/':
+          num2>0?result =num1/num2: result=`Cannot divide by zero`;
+          break;
+        }
+        document.getElementById('result').textContent=`The result  is ${result}`;
+      }
+     
+    
+    </script>
+  </body>
+</html>
